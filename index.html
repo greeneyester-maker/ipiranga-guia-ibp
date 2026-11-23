@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Guia Prático de Leitura & Uso — Torre de Controle IBP | Ipiranga</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ipiranga-blue: #003366;
+      --ipiranga-blue-dark: #002244;
+      --ipiranga-blue-light: #004c99;
+      --ipiranga-yellow: #FFD100;
+      --ipiranga-yellow-hover: #E6BC00;
+      --bg-page: #F4F7FA;
+      --bg-card: #FFFFFF;
+      --text-main: #0F172A;
+      --text-secondary: #334155;
+      --text-muted: #64748B;
+      --border-light: #E2E8F0;
+      --success-bg: #ECFDF5;
+      --success-text: #065F46;
+      --success-border: #A7F3D0;
+      --warn-bg: #FFFBEB;
+      --warn-text: #92400E;
+      --warn-border: #FDE68A;
+      --danger-bg: #FEF2F2;
+      --danger-text: #991B1B;
+      --danger-border: #FECACA;
+      --radius-lg: 14px;
+      --radius-md: 10px;
+      --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.05);
+      --shadow-md: 0 8px 24px rgba(0, 51, 102, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-page);
+      color: var(--text-main);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Header Institucional */
+    header {
+      background: linear-gradient(135deg, var(--ipiranga-blue-dark) 0%, var(--ipiranga-blue) 100%);
+      color: #FFFFFF;
+      border-bottom: 4px solid var(--ipiranga-yellow);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.14);
+    }
+
+    .header-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .logo-badge {
+      background-color: var(--ipiranga-yellow);
+      color: var(--ipiranga-blue-dark);
+      font-weight: 800;
+      font-size: 1.05rem;
+      letter-spacing: -0.02em;
+      padding: 6px 14px;
+      border-radius: 8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.18);
+    }
+
+    .brand-title h1 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    .brand-title p {
+      font-size: 0.78rem;
+      color: #CBD5E1;
+    }
+
+    nav {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: #E2E8F0;
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: 6px;
+      transition: all 0.15s ease;
+    }
+
+    nav a:hover {
+      background: rgba(255, 255, 255, 0.12);
+      color: var(--ipiranga-yellow);
+    }
+
+    /* Hero + Seletor de Perfil */
+    .hero {
+      background: #FFFFFF;
+      border-bottom: 1px solid var(--border-light);
+      padding: 40px 24px 36px;
+    }
+
+    .hero-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      background: #EFF6FF;
+      color: var(--ipiranga-blue);
+      border: 1px solid #BFDBFE;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 4px 10px;
+      border-radius: 999px;
+      margin-bottom: 12px;
+    }
+
+    .hero h2 {
+      font-size: 1.9rem;
+      font-weight: 800;
+      color: var(--ipiranga-blue-dark);
+      line-height: 1.2;
+      margin-bottom: 10px;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-desc {
+      font-size: 1.02rem;
+      color: var(--text-secondary);
+      max-width: 780px;
+      margin-bottom: 24px;
+    }
+
+    /* Seletor de Trilha (Iniciante vs Executivo IBP) */
+    .profile-switcher {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      background: var(--bg-page);
+      padding: 12px 16px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-light);
+    }
+
+    .profile-label {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--ipiranga-blue-dark);
+    }
+
+    .profile-btn {
+      border: 1.5px solid #CBD5E1;
+      background: #FFFFFF;
+      color: var(--text-secondary);
+      font-family: inherit;
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 8px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .profile-btn.active {
+      background: var(--ipiranga-blue);
+      color: #FFFFFF;
+      border-color: var(--ipiranga-blue);
+      box-shadow: 0 2px 8px rgba(0, 51, 102, 0.22);
+    }
+
+    .profile-banner {
+      margin-top: 16px;
+      padding: 14px 18px;
+      border-radius: var(--radius-md);
+      background: #FFFBEB;
+      border-left: 4px solid var(--ipiranga-yellow);
+      color: #1E293B;
+      font-size: 0.92rem;
+    }
+
+    /* Container Principal */
+    main {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 36px 24px 64px;
+      display: flex;
+      flex-direction: column;
+      gap: 44px;
+    }
+
+    .section-header {
+      margin-bottom: 18px;
+    }
+
+    .section-step {
+      font-size: 0.76rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--ipiranga-blue-light);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .section-header h3 {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--ipiranga-blue-dark);
+      letter-spacing: -0.01em;
+    }
+
+    .section-header p {
+      font-size: 0.94rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    /* Grid de Passos (Como Usar) */
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 18px;
+    }
+
+    .step-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      padding: 22px;
+      box-shadow: var(--shadow-sm);
+      position: relative;
+    }
+
+    .step-num {
+      width: 32px;
+      height: 32px;
+      background: var(--ipiranga-yellow);
+      color: var(--ipiranga-blue-dark);
+      font-weight: 800;
+      font-size: 0.95rem;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 14px;
+    }
+
+    .step-card h4 {
+      font-size: 1.02rem;
+      font-weight: 700;
+      color: var(--ipiranga-blue-dark);
+      margin-bottom: 8px;
+    }
+
+    .step-card p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+
+    /* Roteiro de Leitura de 3 Minutos */
+    .blocks-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .block-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      padding: 22px 24px;
+      box-shadow: var(--shadow-sm);
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    @media (max-width: 768px) {
+      .block-item {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .block-badge-col {
+      border-right: 1px solid var(--border-light);
+      padding-right: 16px;
+    }
+
+    @media (max-width: 768px) {
+      .block-badge-col {
+        border-right: none;
+        border-bottom: 1px solid var(--border-light);
+        padding-bottom: 12px;
+      }
+    }
+
+    .block-tag {
+      display: inline-block;
+      background: var(--ipiranga-blue);
+      color: #FFFFFF;
+      font-size: 0.74rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 6px;
+      margin-bottom: 8px;
+    }
+
+    .block-badge-col h4 {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--ipiranga-blue-dark);
+    }
+
+    .block-time {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+      font-weight: 500;
+    }
+
+    .block-content-col {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .dual-view {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    @media (max-width: 680px) {
+      .dual-view {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .view-box {
+      padding: 12px 14px;
+      border-radius: var(--radius-md);
+      font-size: 0.88rem;
+    }
+
+    .view-simple {
+      background: #F8FAFC;
+      border: 1px solid #E2E8F0;
+    }
+
+    .view-exec {
+      background: #EFF6FF;
+      border: 1px solid #DBEAFE;
+    }
+
+    .view-box strong {
+      display: block;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 4px;
+    }
+
+    .view-simple strong { color: #475569; }
+    .view-exec strong { color: var(--ipiranga-blue); }
+
+    /* Dicionário Interativo de Indicadores */
+    .filter-bar {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+
+    .filter-pill {
+      background: #FFFFFF;
+      border: 1px solid #CBD5E1;
+      color: var(--text-secondary);
+      font-family: inherit;
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .filter-pill.active, .filter-pill:hover {
+      background: var(--ipiranga-blue);
+      color: #FFFFFF;
+      border-color: var(--ipiranga-blue);
+    }
+
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 18px;
+    }
+
+    .kpi-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .kpi-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .kpi-title {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--ipiranga-blue-dark);
+    }
+
+    .kpi-cat {
+      font-size: 0.72rem;
+      font-weight: 700;
+      background: #F1F5F9;
+      color: #475569;
+      padding: 3px 8px;
+      border-radius: 6px;
+      white-space: nowrap;
+    }
+
+    .kpi-plain {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+
+    .kpi-formula {
+      background: #F8FAFC;
+      border: 1px dashed #CBD5E1;
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      color: var(--ipiranga-blue-dark);
+    }
+
+    .kpi-signal {
+      font-size: 0.83rem;
+      padding: 8px 12px;
+      border-radius: 8px;
+      background: var(--success-bg);
+      color: var(--success-text);
+      border: 1px solid var(--success-border);
+    }
+
+    /* Semáforo de Governança */
+    .alerts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 18px;
+    }
+
+    .alert-card {
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      border: 1px solid;
+    }
+
+    .alert-green {
+      background: var(--success-bg);
+      border-color: var(--success-border);
+      color: var(--success-text);
+    }
+
+    .alert-yellow {
+      background: var(--warn-bg);
+      border-color: var(--warn-border);
+      color: var(--warn-text);
+    }
+
+    .alert-red {
+      background: var(--danger-bg);
+      border-color: var(--danger-border);
+      color: var(--danger-text);
+    }
+
+    .alert-card h4 {
+      font-size: 1rem;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+
+    .alert-card p {
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+
+    /* Checklist Executivo */
+    .checklist-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .check-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid #F1F5F9;
+      cursor: pointer;
+    }
+
+    .check-row:last-child {
+      border-bottom: none;
+    }
+
+    .check-row input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      margin-top: 3px;
+      accent-color: var(--ipiranga-blue);
+      cursor: pointer;
+    }
+
+    .check-text strong {
+      display: block;
+      font-size: 0.94rem;
+      color: var(--ipiranga-blue-dark);
+    }
+
+    .check-text span {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+    }
+
+    footer {
+      background: var(--ipiranga-blue-dark);
+      color: #CBD5E1;
+      text-align: center;
+      padding: 24px;
+      font-size: 0.82rem;
+      border-top: 3px solid var(--ipiranga-yellow);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-inner">
+      <div class="brand">
+        <div class="logo-badge">IPIRANGA</div>
+        <div class="brand-title">
+          <h1>Guia de Leitura & Uso — Torre de Controle IBP</h1>
+          <p>Manual prático para leitura executiva, governança de ciclo e simulação de cenários</p>
+        </div>
+      </div>
+      <nav>
+        <a href="#como-usar">1. Como Usar</a>
+        <a href="#roteiro-leitura">2. Roteiro de Leitura</a>
+        <a href="#dicionario">3. O que Significa Cada Coisa</a>
+        <a href="#governanca">4. Alertas & Travas</a>
+        <a href="#checklist">5. Checklist de Reunião</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-inner">
+      <span class="hero-tag">Documentação Funcional & Executiva</span>
+      <h2>Entenda a Torre de Controle IBP em menos de 5 minutos</h2>
+      <p class="hero-desc">
+        Este guia traduz os números, gráficos e travas de governança do painel de Planejamento Integrado de Negócios (IBP). Escolha abaixo seu nível de familiaridade com o rito de S&OP / IBP para ajustar as dicas de leitura.
+      </p>
+
+      <div class="profile-switcher">
+        <span class="profile-label">Como você prefere ler este guia?</span>
+        <button class="profile-btn active" onclick="setProfile('todos', this)">Visão Completa (Ambos)</button>
+        <button class="profile-btn" onclick="setProfile('iniciante', this)">Primeira vez vendo um painel IBP</button>
+        <button class="profile-btn" onclick="setProfile('executivo', this)">Já conheço a rotina IBP / S&OP Ipiranga</button>
+      </div>
+
+      <div class="profile-banner" id="profile-banner">
+        <strong>Visão Completa ativada:</strong> Cada bloco mostra primeiro a explicação simples ("Em português claro") e, ao lado, a leitura técnica usada no comitê executivo da Ipiranga.
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <!-- SEÇÃO 1: COMO UTILIZAR O PAINEL -->
+    <section id="como-usar">
+      <div class="section-header">
+        <span class="section-step">Passo 1 • Operação da Ferramenta</span>
+        <h3>Como utilizar o painel na prática</h3>
+        <p>O painel funciona 100% no navegador e recalcula todos os indicadores automaticamente quando você troca a planilha.</p>
+      </div>
+
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-num">1</div>
+          <h4>Confira o Ciclo no Topo</h4>
+          <p>Olhe o selo superior direito (ex.: <strong>Nov/2026</strong> ou <strong>Dez/2026</strong>) e a data de extração (<em>Snapshot</em>). Ele garante que toda a sala está olhando a mesma fotografia do mês.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">2</div>
+          <h4>Atualize Dados via Excel</h4>
+          <p>Clique em <strong>Importar Planilha (.xlsx)</strong> para carregar um novo fechamento. O motor lê as 8 abas padrão e atualiza gráficos, bridges e comentários instantaneamente.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">3</div>
+          <h4>Compare Cenários de Decisão</h4>
+          <p>No bloco de Supply e Trade-off, compare o impacto no <strong>EBITDA</strong> entre manter o plano restrito, pagar frete spot rodoviário ou priorizar mix de maior margem.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">4</div>
+          <h4>Valide o Semáforo de Governança</h4>
+          <p>Antes de encerrar a reunião, verifique se não há alertas vermelhos de divergência entre Comercial e Logística ou bases abaixo do mínimo regulatório da ANP.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 2: ROTEIRO DE LEITURA DE CIMA PARA BAIXO -->
+    <section id="roteiro-leitura">
+      <div class="section-header">
+        <span class="section-step">Passo 2 • Ordem de Leitura</span>
+        <h3>Como ler a tela de cima para baixo</h3>
+        <p>O dashboard segue exatamente a sequência lógica de uma reunião executiva de IBP.</p>
+      </div>
+
+      <div class="blocks-list">
+        <!-- Bloco 1 -->
+        <div class="block-item">
+          <div class="block-badge-col">
+            <span class="block-tag">Bloco 1 • Topo</span>
+            <h4>Visão Executiva & KPIs</h4>
+            <div class="block-time">Tempo de leitura: 30 segundos</div>
+          </div>
+          <div class="block-content-col">
+            <div class="dual-view">
+              <div class="view-box view-simple">
+                <strong>Para quem nunca viu</strong>
+                Responde rápido: <em>"Vendemos mais ou menos que o planejado? Deu lucro acima da meta? Os postos estão abastecidos?"</em> Verde significa dentro ou acima da meta; amarelo/vermelho pede atenção.
+              </div>
+              <div class="view-box view-exec">
+                <strong>Dinâmica IBP Ipiranga</strong>
+                Confronta o volume consensado e o EBITDA projetado contra o <strong>AOP (Orçamento Anual)</strong>, checando acuracidade (WMAPE &lt; 4,0%), viés (Bias ~ 0%) e cobertura média ponderada (&ge; 7,0 dias).
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bloco 2 -->
+        <div class="block-item">
+          <div class="block-badge-col">
+            <span class="block-tag">Bloco 2 • Demanda</span>
+            <h4>Bridge & Evolução Mensal</h4>
+            <div class="block-time">Tempo de leitura: 1 minuto</div>
+          </div>
+          <div class="block-content-col">
+            <div class="dual-view">
+              <div class="view-box view-simple">
+                <strong>Para quem nunca viu</strong>
+                Mostra como chegamos no volume final: começamos com a previsão estatística do sistema e somamos os pedidos extras do time comercial e promoções. Depois, mostra o volume por região do Brasil.
+              </div>
+              <div class="view-box view-exec">
+                <strong>Dinâmica IBP Ipiranga</strong>
+                Audita o <strong>FVA (Forecast Value Added)</strong>: mede quanto o ajuste comercial e as ações promocionais adicionaram ao forecast estatístico base, além de expor viés regional (ex.: sobreprevisão no Nordeste vs. subprevisão no Sudeste).
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bloco 3 -->
+        <div class="block-item">
+          <div class="block-badge-col">
+            <span class="block-tag">Bloco 3 • Supply & Financeiro</span>
+            <h4>Restrições & Trade-offs</h4>
+            <div class="block-time">Tempo de leitura: 1 minuto</div>
+          </div>
+          <div class="block-content-col">
+            <div class="dual-view">
+              <div class="view-box view-simple">
+                <strong>Para quem nunca viu</strong>
+                Compara o que o comercial <em>quer vender</em> com o que a logística <em>consegue entregar</em>. Quando falta navio, trem ou tanque, o painel mostra quanto volume ficou de fora e qual a melhor saída para não perder dinheiro.
+              </div>
+              <div class="view-box view-exec">
+                <strong>Dinâmica IBP Ipiranga</strong>
+                Reconcilia o corte entre <strong>Plano Irrestrito</strong> e <strong>Plano Restrito</strong> com os gargalos ativos (ex.: Santos/Cubatão, Rondonópolis, Araucária) e orienta a deliberação financeira entre <em>Frete Spot</em> vs. <em>Priorização de Mix Nobre</em>.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bloco 4 -->
+        <div class="block-item">
+          <div class="block-badge-col">
+            <span class="block-tag">Bloco 4 • Execução (S&OE)</span>
+            <h4>Bases ANP, Custos & Viagens</h4>
+            <div class="block-time">Tempo de leitura: 45 segundos</div>
+          </div>
+          <div class="block-content-col">
+            <div class="dual-view">
+              <div class="view-box view-simple">
+                <strong>Para quem nunca viu</strong>
+                Olha o dia a dia da operação: quantos dias de combustível temos em cada base, se pagamos multa por atraso de navio (demurrage) e se os caminhões/trens chegaram no horário.
+              </div>
+              <div class="view-box view-exec">
+                <strong>Dinâmica IBP Ipiranga</strong>
+                Monitora o cumprimento do <strong>piso regulatório da ANP</strong> por base primária, eficiência portuária (ocupação de tancagem, <em>dwell time</em> e <em>demurrage</em> vs. budget) e a <strong>Pontualidade (Proxy OTIF)</strong> na malha S&OE.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 3: DICIONÁRIO DE INDICADORES -->
+    <section id="dicionario">
+      <div class="section-header">
+        <span class="section-step">Passo 3 • Glossário Traduzido</span>
+        <h3>O que significa cada indicador no painel</h3>
+        <p>Filtre por área para consultar a definição simples, a fórmula e o que esperar de um bom resultado.</p>
+      </div>
+
+      <div class="filter-bar">
+        <button class="filter-pill active" onclick="filterKpis('all', this)">Todos os Indicadores</button>
+        <button class="filter-pill" onclick="filterKpis('demanda', this)">Demanda & Mercado</button>
+        <button class="filter-pill" onclick="filterKpis('supply', this)">Supply & Finanças</button>
+        <button class="filter-pill" onclick="filterKpis('execucao', this)">Execução & ANP</button>
+      </div>
+
+      <div class="kpi-grid" id="kpi-grid">
+        <!-- Card 1 -->
+        <div class="kpi-card" data-cat="demanda">
+          <div>
+            <div class="kpi-top">
+              <span class="kpi-title">Volume Consensado (MM m³)</span>
+              <span class="kpi-cat">Demanda</span>
+            </div>
+            <p class="kpi-plain" style="margin-top:8px;">
+              <strong>O que é:</strong> É o volume oficial de combustíveis (em milhões de metros cúbicos) acordado entre Comercial, Marketing e Logística para o mês.
+            </p>
+          </div>
+          <div class="kpi-formula"><strong>Conta:</strong> Forecast Base + Ajuste Comercial + Efeito Promocional</div>
+          <div class="kpi-signal"><strong>Bom sinal:</strong> Fechar igual ou acima do orçamento anual (AOP), sem inflar números artificialmente.</div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="kpi-card" data-cat="demanda">
+          <div>
+            <div class="kpi-top">
+              <span class="kpi-title">WMAPE (Erro de Previsão)</span>
+              <span class="kpi-cat">Demanda</span>
+            </div>
+            <p class="kpi-plain" style="margin-top:8px;">
+              <strong>O que é:</strong> Mede o quanto erramos na previsão de vendas, dando peso maior para as regiões e produtos de maior volume. <strong>Quanto menor, melhor.</strong>
+            </p>
+          </div>
+          <div class="kpi-formula"><strong>Conta:</strong> Soma dos erros absolutos ÷ Volume total realizado (%)</div>
+          <div class="kpi-signal"><strong>Bom sinal:</strong> Abaixo da meta de <strong>4,0%</strong> (indica alta previsibilidade para comprar e transportar).</div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="kpi-card" data-cat="demanda">
+          <div>
+            <div class="kpi-top">
+              <span class="kpi-title">Bias (Viés de Previsão)</span>
+              <span class="kpi-cat">Demanda</span>
+            </div>
+            <p class="kpi-plain" style="margin-top:8px;">
+              <strong>O que é:</strong> Mostra se a equipe tende a ser otimista demais (prever mais do que vende) ou pessimista demais (vender mais do que previu).
+            </p>
+          </div>
+          <div class="kpi-formula"><strong>Leitura:</strong> Positivo (+) = sobrou produto • Negativo (-) = faltou previsão</div>
+          <div class="kpi-signal"><strong>Bom sinal:</strong> Próximo de <strong>0,0%</strong> (equilíbrio entre regiões sem tendência viciada).</div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="kpi-card" data-cat="supply">
+          <div>
+            <div class="kpi-top">
+              <span class="kpi-title">Plano Irrestrito vs. Restrito</span>
+              <span class="kpi-cat">Supply</span>
+            </div>
+            <p class="kpi-plain" style="margin-top:8px;">
+              <strong>O que é:</strong> O <em>Irrestrito</em> é toda a demanda que o mercado quer comprar. O <em>Restrito</em> é o quanto a infraestrutura (portos, dutos, ferrovias) consegue atender.
+            </p>
+          </div>
+          <div class="kpi-formula"><strong>Conta:</strong> Plano Irrestrito − Soma das Restrições Ativas = Plano Restrito</div>
+          <div class="kpi-signal"><strong>Bom sinal:</strong> Atendimento físico acima de <strong>97%</strong> e 100% da diferença explicada por gargalos reais.</div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="kpi-card" data-cat="supply">
+          <div>
+            <div class="kpi-top">
+              <span class="kpi-title">Trade-off: Mix Nobre vs. Frete Spot</span>
+              <span class="kpi-cat">Finanças</span>
+            </div>
+            <p class="kpi-plain" style="margin-top:8px;">
+              <strong>O que é:</strong> Quando falta produto, contratar caminhões extras de última hora (<em>Frete Spot</em>) sai caro e derruba o lucro. Priorizar produtos de maior margem (<em>Mix Nobre</em>) protege o caixa.
+            </p>
+          </div>
+          <div class="kpi-formula"><strong>Decisão:</strong> Compara Volume Capturado × Custo Logístico Extra × EBITDA Final</div>
+          <div class="kpi-signal"><strong>Bom sinal:</strong> Escolher a opção que maximiza o <strong>EBITDA incremental</strong> (ex.: +R$ 10,5 MM no Mix Nobre).</div>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="kpi-card" data-cat="execucao">
+          <div>
+            <div class="kpi-top">
+              <span class="kpi-title">Cobertura de Estoque & Piso ANP</span>
+              <span class="kpi-cat">Regulatório</span>
+            </div>
+            <p class="kpi-plain" style="margin-top:8px;">
+              <strong>O que é:</strong> Quantos dias de vendas o estoque atual de cada base aguenta. A ANP exige um estoque mínimo obrigatório por lei para garantir o abastecimento do país.
+            </p>
+          </div>
+          <div class="kpi-formula"><strong>Conta:</strong> Estoque Físico (m³) ÷ Demanda Média Diária (m³/dia)</div>
+          <div class="kpi-signal"><strong>Bom sinal:</strong> Média geral acima de <strong>7,0 dias</strong> e nenhuma base operando abaixo do mínimo ANP.</div>
+        </div>
+
+        <!-- Card 7 -->
+        <div class="kpi-card" data-cat="execucao">
+          <div>
+            <div class="kpi-top">
+              <span class="kpi-title">Pontualidade (Proxy OTIF)</span>
+              <span class="kpi-cat">Execução S&OE</span>
+            </div>
+            <p class="kpi-plain" style="margin-top:8px;">
+              <strong>O que é:</strong> Percentual de viagens entregues no prazo combinado. O painel chama de <em>Proxy OTIF</em> por rigor técnico: mede o prazo (<em>On-Time</em>), mas avisa que a base atual ainda não traz o corte de volume (<em>In-Full</em>).
+            </p>
+          </div>
+          <div class="kpi-formula"><strong>Conta:</strong> Viagens entregues "No Prazo" ÷ Total de viagens monitoradas</div>
+          <div class="kpi-signal"><strong>Bom sinal:</strong> Acima de <strong>90%</strong> em períodos de pico e sem atrasos críticos recorrentes na mesma rota.</div>
+        </div>
+
+        <!-- Card 8 -->
+        <div class="kpi-card" data-cat="execucao">
+          <div>
+            <div class="kpi-top">
+              <span class="kpi-title">Demurrage & Dwell Time</span>
+              <span class="kpi-cat">Portos & Terminais</span>
+            </div>
+            <p class="kpi-plain" style="margin-top:8px;">
+              <strong>O que é:</strong> <em>Dwell Time</em> é o tempo médio que o caminhão fica parado carregando na base. <em>Demurrage</em> é a multa paga quando um navio fica esperando além do tempo contratado para descarregar.
+            </p>
+          </div>
+          <div class="kpi-formula"><strong>Comparação:</strong> Demurrage Realizado (R$ MM) vs. Budget aprovado</div>
+          <div class="kpi-signal"><strong>Bom sinal:</strong> Demurrage abaixo do orçamento (economia de caixa) e Dwell Time controlado (~2,2h).</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 4: SEMÁFORO DE GOVERNANÇA -->
+    <section id="governanca">
+      <div class="section-header">
+        <span class="section-step">Passo 4 • Travas Automáticas</span>
+        <h3>Como funcionam os alertas de governança</h3>
+        <p>O painel possui regras matemáticas embutidas para impedir que números inconsistentes sejam aprovados na reunião.</p>
+      </div>
+
+      <div class="alerts-grid">
+        <div class="alert-card alert-green">
+          <h4>Verde: Ciclo Reconciliado</h4>
+          <p>
+            A soma da Bridge fecha exatamente com o volume das Regionais, os gargalos de Supply explicam 100% da diferença entre plano irrestrito e restrito, e todas as bases respeitam o piso ANP. <strong>Pronto para homologação.</strong>
+          </p>
+        </div>
+
+        <div class="alert-card alert-yellow">
+          <h4>Amarelo: Aviso de Qualidade de Dado</h4>
+          <p>
+            O cálculo principal fecha, mas existe uma limitação metodológica documentada — por exemplo, o aviso de <strong>OTIF não verificável</strong> enquanto a planilha não trouxer volume pedido vs. entregue. <strong>Transparência executiva.</strong>
+          </p>
+        </div>
+
+        <div class="alert-card alert-red">
+          <h4>Vermelho: Bloqueio de Homologação</h4>
+          <p>
+            Dispara automaticamente se houver divergência matemática (ex.: Comercial declara 4,35 MM m³, mas a bridge soma 4,20 MM m³) ou se alguma base ficar abaixo do mínimo ANP. <strong>Exige correção antes do fechamento.</strong>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 5: CHECKLIST DE REUNIÃO -->
+    <section id="checklist">
+      <div class="section-header">
+        <span class="section-step">Passo 5 • Guia de Bolso</span>
+        <h3>Checklist rápido para conduzir a leitura em comitê</h3>
+        <p>Marque os itens conforme valida cada etapa do fechamento mensal.</p>
+      </div>
+
+      <div class="checklist-box">
+        <label class="check-row">
+          <input type="checkbox" checked />
+          <div class="check-text">
+            <strong>1. Validar fechamento da Bridge e Regionais</strong>
+            <span>Conferir se Forecast Base + Ajustes + Promoções batem 100% com a soma das 5 regionais.</span>
+          </div>
+        </label>
+
+        <label class="check-row">
+          <input type="checkbox" checked />
+          <div class="check-text">
+            <strong>2. Avaliar acuracidade (WMAPE) e tendência de viés (Bias)</strong>
+            <span>Verificar se o erro está abaixo da meta (4,0%) e se alguma regional está superestimando demanda.</span>
+          </div>
+        </label>
+
+        <label class="check-row">
+          <input type="checkbox" />
+          <div class="check-text">
+            <strong>3. Auditar gargalos físicos de Supply</strong>
+            <span>Confirmar se cada m³ cortado do plano irrestrito está justificado na tabela de restrições ativas.</span>
+          </div>
+        </label>
+
+        <label class="check-row">
+          <input type="checkbox" />
+          <div class="check-text">
+            <strong>4. Checar piso regulatório ANP nas 6 bases</strong>
+            <span>Garantir margem de segurança acima do mínimo legal em Paulínia, Caxias, Araucária, Rondonópolis, Suape e Belém.</span>
+          </div>
+        </label>
+
+        <label class="check-row">
+          <input type="checkbox" />
+          <div class="check-text">
+            <strong>5. Deliberar o cenário financeiro vencedor</strong>
+            <span>Aprovar formalmente a recomendação de maior EBITDA (ex.: Priorização de Mix Nobre) e registrar a ata no ciclo.</span>
+          </div>
+        </label>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Guia de Leitura & Governança IBP • Padrão Visual Ipiranga • Documentação de Apoio à Torre de Controle S&OP / IBP
+  </footer>
+
+  <script>
+    function setProfile(mode, btn) {
+      document.querySelectorAll('.profile-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const banner = document.getElementById('profile-banner');
+      const simpleBoxes = document.querySelectorAll('.view-simple');
+      const execBoxes = document.querySelectorAll('.view-exec');
+      const dualViews = document.querySelectorAll('.dual-view');
+
+      if (mode === 'iniciante') {
+        banner.innerHTML = '<strong>Modo Primeira Viagem ativado:</strong> Exibindo apenas as explicações diretas e sem jargões para você entender rapidamente o que cada gráfico responde.';
+        simpleBoxes.forEach(el => el.style.display = 'block');
+        execBoxes.forEach(el => el.style.display = 'none');
+        dualViews.forEach(el => el.style.gridTemplateColumns = '1fr');
+      } else if (mode === 'executivo') {
+        banner.innerHTML = '<strong>Modo Executivo IBP / S&OP ativado:</strong> Foco direto na dinâmica de comitê Ipiranga (AOP, FVA, reconciliação irrestrito/restrito, piso ANP e EBITDA incremental).';
+        simpleBoxes.forEach(el => el.style.display = 'none');
+        execBoxes.forEach(el => el.style.display = 'block');
+        dualViews.forEach(el => el.style.gridTemplateColumns = '1fr');
+      } else {
+        banner.innerHTML = '<strong>Visão Completa ativada:</strong> Cada bloco mostra primeiro a explicação simples ("Em português claro") e, ao lado, a leitura técnica usada no comitê executivo da Ipiranga.';
+        simpleBoxes.forEach(el => el.style.display = 'block');
+        execBoxes.forEach(el => el.style.display = 'block');
+        dualViews.forEach(el => el.style.gridTemplateColumns = '');
+      }
+    }
+
+    function filterKpis(cat, btn) {
+      document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+
+      document.querySelectorAll('.kpi-card').forEach(card => {
+        if (cat === 'all' || card.getAttribute('data-cat') === cat) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html>
